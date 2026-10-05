@@ -1,0 +1,210 @@
+:root {
+  --paper: #fffaeb;
+  --ink: #000;
+  --sun: #ffd800;
+  --flame: #fa500f;
+  --pixel: 'Pixelify Sans', ui-monospace, 'Courier New', monospace;
+  --text: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --edge: clamp(20px, 3.2vw, 44px);
+  --cell: 9px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 16px/1.45 var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+#scene {
+  position: fixed;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  cursor: crosshair;
+}
+
+/* Overlays let clicks fall through to the canvas, except on the buttons. */
+.masthead,
+.bottom {
+  position: fixed;
+  left: var(--edge);
+  right: var(--edge);
+  pointer-events: none;
+}
+
+.masthead {
+  top: var(--edge);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+}
+
+h1 {
+  font: 500 24px/1.1 var(--pixel);
+}
+
+.depth,
+.count,
+.hint {
+  font-size: 14px;
+}
+
+.bottom {
+  bottom: var(--edge);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.stage {
+  max-width: 26rem;
+}
+
+.stage-index {
+  font: 400 24px/1 var(--pixel);
+}
+
+.stage-name {
+  margin: 8px 0 12px;
+  font: 500 clamp(40px, 5.4vw, 72px)/1 var(--pixel);
+}
+
+.stage-copy {
+  max-width: 34ch;
+}
+
+.dock {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px 40px;
+}
+
+.meter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+}
+
+.meter-wave {
+  display: flex;
+  gap: 3px;
+}
+
+.meter i {
+  width: var(--cell);
+  height: var(--cell);
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.22);
+}
+
+.meter i.on {
+  background: var(--fill);
+  box-shadow: none;
+}
+
+.count {
+  margin-top: 10px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  pointer-events: auto;
+}
+
+button {
+  padding: 10px 14px;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  font: 500 14px/1 var(--text);
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--sun);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+button:focus-visible {
+  outline: 3px solid var(--flame);
+  outline-offset: 2px;
+}
+
+.fallback {
+  display: none;
+}
+
+.no-webgl #scene {
+  display: none;
+}
+
+.no-webgl .fallback {
+  position: fixed;
+  top: 50%;
+  left: var(--edge);
+  display: block;
+  max-width: 32ch;
+  font-size: 18px;
+}
+
+/* Once the controls wrap under the meter, they line up with everything else on the left. */
+@media (max-width: 1100px) {
+  .controls {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 720px) {
+  :root {
+    --cell: 7px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .bottom {
+    gap: 24px;
+  }
+
+  .stage-name {
+    margin: 6px 0 8px;
+    font-size: 36px;
+  }
+
+  .stage-copy {
+    font-size: 15px;
+  }
+
+  .hint {
+    display: none;
+  }
+}

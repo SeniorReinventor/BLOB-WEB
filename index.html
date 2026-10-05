@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Self-recursing semantic system</title>
+    <meta
+      name="description"
+      content="A field of cubes that breathes, absorbs incoming data and slowly organizes itself from a blob into a cube."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23FFD800' d='M8 1l7 3.5L8 8 1 4.5z'/%3E%3Cpath fill='%23FF8205' d='M1 4.5L8 8v7l-7-3.5z'/%3E%3Cpath fill='%23E10500' d='M15 4.5L8 8v7l7-3.5z'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&family=Pixelify+Sans:wght@400;500&display=swap"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="importmap">
+      { "imports": { "three": "./vendor/three/three.module.js" } }
+    </script>
+    <script type="module" src="./src/main.js"></script>
+  </head>
+  <body>
+    <canvas
+      id="scene"
+      role="img"
+      aria-label="A breathing blob made of small orange and yellow cubes. Black lines stream data into it, and with every packet that lands it settles further into the shape of a striped cube."
+    ></canvas>
+
+    <header class="masthead">
+      <h1>Self-recursing<br />semantic system</h1>
+      <p class="depth" id="depth">Recursion depth 1</p>
+    </header>
+
+    <div class="bottom">
+      <section class="stage" aria-live="polite" aria-atomic="true">
+        <p class="stage-index" id="stage-index">00</p>
+        <h2 class="stage-name" id="stage-name">Latent</h2>
+        <p class="stage-copy" id="stage-copy">An unshaped field of meaning. It breathes and waits for input.</p>
+      </section>
+
+      <footer class="dock">
+        <div class="progress">
+          <div
+            class="meter"
+            id="meter"
+            role="progressbar"
+            aria-label="Signals absorbed"
+            aria-valuemin="0"
+            aria-valuemax="48"
+            aria-valuenow="0"
+          ></div>
+          <p class="count"><span id="count">0</span> of 48 signals absorbed</p>
+        </div>
+        <div class="controls">
+          <p class="hint">Click anywhere to stream data in, or drag to turn the form.</p>
+          <div class="buttons">
+            <button type="button" id="feed">Stream data</button>
+            <button type="button" id="pause">Pause</button>
+            <button type="button" id="restart">Restart</button>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <p class="fallback">This piece needs WebGL 2. Open it in a current version of Chrome, Edge, Firefox or Safari.</p>
+  </body>
+</html>
